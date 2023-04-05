@@ -5,16 +5,17 @@ class UsersController < ApplicationController
 
   def show
     @user = current_user
-    @trips = Trip.where(user_id: current_user.id)
-    @popular_destinations = @user.popular_destinations
-    @markers = @trips.geocoded.map do |trip|
+    upcoming_trips = Trip.where(user_id: current_user.id).where("start_date > ?", Date.today)
+    @next_trip = upcoming_trips.sort.first
+    @past_trips = Trip.where(user_id: current_user.id).where("end_date < ?", Date.today)
+    @last_trip = @past_trips.sort.first
+
+
+    @markers = @past_trips.geocoded.map do |trip|
       {
         lat: trip.latitude,
         lng: trip.longitude,
-        info_window_html: render_to_string(partial: "/trips/info_window",
-                                           locals: {
-                                             trip:
-                                           }),
+        info_window_html: render_to_string(partial: "/trips/info_window", locals: { trip:}),
         marker_html: render_to_string(partial: "/trips/marker", locals: { trip: })
       }
     end

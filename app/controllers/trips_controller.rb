@@ -2,16 +2,9 @@ class TripsController < ApplicationController
   @@client = OpenAI::Client.new
 
   def index
-    if params[:query].present?
-      sql_query = "trip_name ILIKE :query OR destination ILIKE :query"
-      @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
-    else
-      @trips = Trip.where(user_id: current_user.id)
-    end
-
-    @past_trips = Trip.where({end_date: ..Date.today, user_id: current_user.id})
-    @current_trip = Trip.where({start_date: Date.today..Float::INFINITY, end_date: Date.today...Float::INFINITY, user_id: current_user.id}).first
-    @upcoming_trips = Trip.where({start_date: Date.tomorrow..Float::INFINITY, user_id: current_user.id})
+    @past_trips = Trip.where({ end_date: ..Date.today, user_id: current_user.id })
+    @upcoming_trips = Trip.where({ start_date: Date.tomorrow..Float::INFINITY, user_id: current_user.id })
+    @current_trip = Trip.where({ start_date: Date.today..Float::INFINITY, end_date: Date.today...Float::INFINITY, user_id: current_user.id }).first
   end
 
   def new
@@ -50,8 +43,8 @@ class TripsController < ApplicationController
       Please format the response in a HTML list."
 
     itinerary_response = @@client.completions(
+      model: "text-davinci-003",
       parameters: {
-        model: "text-davinci-003",
         prompt: itinerary_prompt,
         max_tokens: 2000,
         temperature: 0.1

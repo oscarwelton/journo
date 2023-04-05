@@ -1,2 +1,20 @@
-<h1>hello world</h1>
-<h3>this will be the user dashboard page</h3>
+<div class="parent">
+  <div class="next-trip">
+  <h1>Next Trip</h1>
+    <h3><%= @next_trip.trip_name %></h3>
+    <h4><%= @next_trip.destination %></h4>
+    <h4><%= @next_trip.start_date.strftime("%e %b") %></h4>
+  </div>
+  <div class="last-trip">
+    <h1>Last Trip</h1>
+    <h3><%= @last_trip.trip_name %></h3>
+    <h4><%= @last_trip.destination %></h4>
+    <h4><%= @last_trip.start_date.strftime("%e %b") %></h4>
+  </div>
+
+    <div class="map-card"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+</div>

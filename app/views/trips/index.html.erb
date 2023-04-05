@@ -13,26 +13,32 @@
     <h1>upcoming</h1>
     <div class="upcoming-trip-cards">
       <% @upcoming_trips.each do |trip| %>
+      <%= link_to trip_path(trip) do %>
         <div class="trip-index-card">
           <h5><%= trip.trip_name %></h5>
           <h5><%= trip.start_date %></h5>
           <h5><%= trip.destination %></h5>
         </div>
+        <% end %>
       <% end %>
+      <%= link_to new_trip_path do %>
       <div id="trip-index-new">
         <h1>New Trip</h1>
       </div>
+      <% end %>
     </div>
   </div>
-    <div class="past-trips">
+  <div class="past-trips">
     <h1>past</h1>
     <div class="upcoming-trip-cards">
       <% @past_trips.each do |trip| %>
-        <div class="trip-index-card">
-          <h5><%= trip.trip_name %></h5>
-          <h5><%= trip.start_date %></h5>
-          <h5><%= trip.destination %></h5>
-        </div>
+        <%= link_to trip_path(trip) do %>
+          <div class="trip-index-card">
+            <h5><%= trip.trip_name %></h5>
+            <h5><%= trip.start_date %></h5>
+            <h5><%= trip.destination %></h5>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>
