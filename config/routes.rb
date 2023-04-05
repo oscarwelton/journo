@@ -12,8 +12,6 @@ Rails.application.routes.draw do
     resources :activities, only: [:index, :update]
   end
 
-  resources :favourites, only: [:index]
-
   resources :activities, only: []
 
   require "sidekiq/web"
