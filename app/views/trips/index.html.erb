@@ -1,51 +1,39 @@
-<div class="container">
-  <div class="trip-banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1526392060635-9d6019884377?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80);">
-    <div class="container">
-      <h1>your upcoming trips</h1>
-      <div class="search-bar">
-        <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-    params[:query],
-    class: "form-control search-bar",
-    placeholder: "Search Your Trips"
-  %>
-          <%= submit_tag "search", class: "search-button" %>
-        <% end %>
+<div class="parent">
+  <div class="index-search-bar">
+    <div class="trip-index-links">
+      <%= link_to icon('fa-solid', 'chevron-left'),  user_path(current_user), class: 'btn' %>
+      <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
+    </div>
+    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control search-bar", placeholder: "Search Your Trips" %>
+      <%= submit_tag "search", class: "search-button" %>
+    <% end %>
+  </div>
+  <div class="upcoming-trips">
+    <h1>upcoming</h1>
+    <div class="upcoming-trip-cards">
+      <% @upcoming_trips.each do |trip| %>
+        <div class="trip-index-card">
+          <h5><%= trip.trip_name %></h5>
+          <h5><%= trip.start_date %></h5>
+          <h5><%= trip.destination %></h5>
+        </div>
+      <% end %>
+      <div id="trip-index-new">
+        <h1>New Trip</h1>
       </div>
     </div>
   </div>
-  <br>
-  <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
-  <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
-  <div class="user-map" style="width: 90%; height: 450px;"
-    data-controller="map"
-    data-map-markers-value="<%= @markers.to_json%>"
-    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-  </div>
-  <div class="trips-container-map">
-    <div class="stickies">
-      <% @trips.each do |trip| %>
-        <div class="content-card">
-          <%=link_to (trip) do%>
-            <div class="card-big-shadow">
-              <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
-                <div class="content">
-                  <h6 class="category"> <%= trip.start_date.strftime('%d-%m-%Y') %></h6>
-                  <br>
-                  <h1 class="title"><%= trip.trip_name %></h1>
-                  <br>
-                  <p class="description"><i class="fa-solid fa-location-dot"></i> <%= trip.destination%></p>
-                </div>
-              </div>
-            </div>
-          <%end%>
+    <div class="past-trips">
+    <h1>past</h1>
+    <div class="upcoming-trip-cards">
+      <% @past_trips.each do |trip| %>
+        <div class="trip-index-card">
+          <h5><%= trip.trip_name %></h5>
+          <h5><%= trip.start_date %></h5>
+          <h5><%= trip.destination %></h5>
         </div>
       <% end %>
-    </div>
-  </div>
-  <div class="index-image-container">
-    <div>
-      <h1></h1>
     </div>
   </div>
 </div>

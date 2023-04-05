@@ -44,15 +44,6 @@
   box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-.show-recommendations {
-  grid-column-start: 2;
-  grid-column-end: 8;
-  grid-row-start: 2;
-  grid-row-end: 12;
-  padding: 16px;
-  margin-bottom: 30px;
-}
-
 .trip-recommendations {
   grid-column-start: 2;
   grid-column-end: 8;
@@ -121,4 +112,14 @@ ul {
   li {
     margin: 8px 0px;
   }
+}
+
+.fave {
+  font-size: 24px;
+  color: orange;
+}
+
+.not-fave {
+  font-size: 24px;
+  color: var(--midnight-green);
 }

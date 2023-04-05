@@ -2,23 +2,16 @@ class TripsController < ApplicationController
   @@client = OpenAI::Client.new
 
   def index
-    @user = current_user
-
     if params[:query].present?
       sql_query = "trip_name ILIKE :query OR destination ILIKE :query"
       @trips = Trip.where(sql_query, query: "%#{params[:query]}%")
     else
       @trips = Trip.where(user_id: current_user.id)
     end
-    @trips = Trip.where(user_id: current_user.id).all
-    @markers = @trips.geocoded.map do |trip|
-      {
-        lat: trip.latitude,
-        lng: trip.longitude,
-        info_window_html: render_to_string(partial: "/trips/info_window", locals: { trip: }),
-        marker_html: render_to_string(partial: "/trips/marker", locals: { trip: })
-      }
-    end
+
+    @past_trips = Trip.where({end_date: ..Date.today, user_id: current_user.id})
+    @current_trip = Trip.where({start_date: Date.today..Float::INFINITY, end_date: Date.today...Float::INFINITY, user_id: current_user.id}).first
+    @upcoming_trips = Trip.where({start_date: Date.tomorrow..Float::INFINITY, user_id: current_user.id})
   end
 
   def new
