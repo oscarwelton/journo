@@ -1,7 +1,7 @@
 <div class="parent">
   <div class="index-search-bar">
     <div class="trip-index-links">
-      <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
+      <%= link_to icon('fa-solid', 'chevron-left'),  user_path(current_user), class: 'btn' %>
       <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
     </div>
     <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
@@ -10,10 +10,30 @@
     <% end %>
   </div>
   <div class="upcoming-trips">
-  <h1>upcoming</h1>
+    <h1>upcoming</h1>
+    <div class="upcoming-trip-cards">
+      <% @upcoming_trips.each do |trip| %>
+        <div class="trip-index-card">
+          <h5><%= trip.trip_name %></h5>
+          <h5><%= trip.start_date %></h5>
+          <h5><%= trip.destination %></h5>
+        </div>
+      <% end %>
+      <div id="trip-index-new">
+        <h1>New Trip</h1>
+      </div>
+    </div>
   </div>
-
-  <div class="past-trips">
-  <h1>past</h1>
+    <div class="past-trips">
+    <h1>past</h1>
+    <div class="upcoming-trip-cards">
+      <% @past_trips.each do |trip| %>
+        <div class="trip-index-card">
+          <h5><%= trip.trip_name %></h5>
+          <h5><%= trip.start_date %></h5>
+          <h5><%= trip.destination %></h5>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

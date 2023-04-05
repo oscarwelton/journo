@@ -13,10 +13,74 @@
   grid-row: 2;
   grid-column-start: 2;
   grid-column-end: 12;
+  margin: 16px 0px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .past-trips {
   grid-row: 3;
   grid-column-start: 2;
   grid-column-end: 12;
+  margin: 16px 0px;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.trip-card {
+  grid-column-start: 2;
+  grid-column-end: 12;
+  grid-row: 2, 12;
+  padding: 8px;
+}
+
+.trip-card h3{
+  color: #073b4cff;
+  font-family: 'Gochi Hand', "cursive";
+  font-size: 12;
+}
+
+.trip-card h5{
+  color: black;
+  font-family: "Quicksand", "sans-serif";
+  font-size: 12;
+}
+
+.upcoming-trip-cards {
+  display: flex;
+}
+
+.trip-index-card {
+  min-width: 250px;
+  height: 250px;
+  margin-right: 8px;
+  padding: 16px;
+  border: 1px solid #073b4cff;
+  border-radius: 5px;
+}
+
+.add-button {
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+
+#trip-index-new {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 250px;
+  height: 250px;
+  margin-right: 8px;
+  padding: 16px;
+  border: 1px solid #073b4cff;
+  border-radius: 5px;
 }
