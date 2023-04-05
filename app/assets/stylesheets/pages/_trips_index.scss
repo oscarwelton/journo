@@ -1,119 +1,22 @@
-a {
-  text-decoration: none;
-}
-
-//stciky notes
-
-.card-big-shadow {
-    width: 35%;
-    position: relative;
-}
-
-.coloured-cards .card {
-    margin-top: 30px;
-}
-
-.card[data-radius="none"] {
-    border-radius: 5px;
-}
-.card {
-    border-radius: 10px;
-    box-shadow: 0 2px 2px #c5beb4;
-    background-color:  #FAF5ED;
-    color: #252422;
-    margin-bottom: 20px;
-    position: relative;
-    z-index: 1;
-    // height: 250px;
-    // width: 250px;
-    // display: flex;
-    // justify-content: space-evenly;
-}
-
-.card[data-background="image"] .title, .card[data-background="image"] .stats, .card[data-background="image"] .category, .card[data-background="image"] .description, .card[data-background="image"] .content, .card[data-background="image"] .card-footer, .card[data-background="image"] small, .card[data-background="image"] .content a, .card[data-background="color"] .title, .card[data-background="color"] .stats, .card[data-background="color"] .category, .card[data-background="color"] .description, .card[data-background="color"] .content, .card[data-background="color"] .card-footer, .card[data-background="color"] small, .card[data-background="color"] .content a {
-    color:  #073b4cff;
-}
-.card.card-just-text .content {
-    padding: 30px 20px;
-    text-align: center;
-}
-.card .content {
-    padding: 20px 20px 10px 20px;
-    border-radius: 5px;
-    h1{
-      font-size: 18px;
-    }
-}
-.card[data-color="blue"] .category {
-    color: #7a9e9f;
-}
-
-.card .category, .card .label {
-    font-size: 14px;
-    margin-bottom: 0px;
-}
-.card-big-shadow:before {
-    background-image: url("http://static.tumblr.com/i21wc39/coTmrkw40/shadow.png");
-    background-position: center bottom;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    bottom: -12%;
-    content: "";
-    left: -12%;
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 0;
-    border-radius: 5px;
-    border-color: #c5beb4;
-}
-
-.card .description {
-    font-size: 16px;
-    color: #231f20ff;
-}
-.content-card{
-    margin-top: 15px;
-    grid-template-columns: 1fr 1fr
-
-}
-a:hover, a:focus {
-    text-decoration: none;
-}
-
-/*======== COLORS ===========*/
-.card[data-color="blue"] {
-    background: #FAF5ED;
-}
-.card[data-color="blue"] .description {
-    color: #073b4cff;
-}
-
-.card[data-color="blue"] .category {
-    color: #073b4cff;
-}
-
-.user-map{
-  border-radius: 5px;
-  box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-}
-
-.index-image-container{
-  background-image: url("https://images.unsplash.com/photo-1469521669194-babb45599def?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1771&q=80");
-  background-size: cover;
-  position: relative;
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-  padding: 150px 0;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-}
-
-.stickies {
-  display: grid;
-}
-
 .content-card {
   grid-template-columns: 1fr 1fr;
+}
+
+.index-search-bar {
+  display: flex;
+  justify-content: space-between;
+  grid-column-start: 2;
+  grid-column-end: 12;
+}
+
+.upcoming-trips {
+  grid-row: 2;
+  grid-column-start: 2;
+  grid-column-end: 12;
+}
+
+.past-trips {
+  grid-row: 3;
+  grid-column-start: 2;
+  grid-column-end: 12;
 }

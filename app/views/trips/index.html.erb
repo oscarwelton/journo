@@ -1,12 +1,19 @@
-<div class="search-bar">
-  <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
-  <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
-  <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
-    <%= text_field_tag :query, params[:query], class: "form-control search-bar", placeholder: "Search Your Trips" %>
-    <%= submit_tag "search", class: "search-button" %>
-  <% end %>
-</div>
+<div class="parent">
+  <div class="index-search-bar">
+    <div class="trip-index-links">
+      <%= link_to icon('fa-solid', 'chevron-left'),  new_trip_path, class: 'btn' %>
+      <%= link_to icon('fa-solid', 'plus'),  new_trip_path, class: 'btn' %>
+    </div>
+    <%= form_with url: trips_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query, params[:query], class: "form-control search-bar", placeholder: "Search Your Trips" %>
+      <%= submit_tag "search", class: "search-button" %>
+    <% end %>
+  </div>
+  <div class="upcoming-trips">
+  <h1>upcoming</h1>
+  </div>
 
-<div class="trip-cards">
- 
+  <div class="past-trips">
+  <h1>past</h1>
+  </div>
 </div>
