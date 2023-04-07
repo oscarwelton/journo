@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
+
   root to: "pages#home"
 
   post '/trips/:trip_id/activities/:id/added', to: 'activities#added', as: 'add_activity_to_trip'
