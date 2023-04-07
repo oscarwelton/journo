@@ -43,8 +43,8 @@ class TripsController < ApplicationController
       Please format the response in a HTML list."
 
     itinerary_response = @@client.completions(
-      model: "text-davinci-003",
       parameters: {
+        model: "text-davinci-003",
         prompt: itinerary_prompt,
         max_tokens: 2000,
         temperature: 0.1
@@ -68,6 +68,10 @@ class TripsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+
   end
 
   private
