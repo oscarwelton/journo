@@ -37,6 +37,7 @@
             <h5><%= trip.trip_name %></h5>
             <h5><%= trip.start_date %></h5>
             <h5><%= trip.destination %></h5>
+            <%= link_to "Delete Trip", trip_path(trip), data: {turbo_method: :delete} %>
           </div>
         <% end %>
       <% end %>
