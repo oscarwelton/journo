@@ -6,10 +6,11 @@ class UsersController < ApplicationController
   def show
     @user = current_user
     upcoming_trips = Trip.where(user_id: current_user.id).where("start_date > ?", Date.today)
-    @next_trip = upcoming_trips.sort.first
-    @past_trips = Trip.where(user_id: current_user.id).where("end_date < ?", Date.today)
-    @last_trip = @past_trips.sort.first
 
+    if upcoming_trips.present?
+      @next_trip = upcoming_trips.sort.first
+      @past_trips = Trip.where(user_id: current_user.id).where("end_date < ?", Date.today)
+      @last_trip = @past_trips.sort.first
 
     @markers = @past_trips.geocoded.map do |trip|
       {
@@ -19,5 +20,6 @@ class UsersController < ApplicationController
         marker_html: render_to_string(partial: "/trips/marker", locals: { trip: })
       }
     end
+  end
   end
 end
